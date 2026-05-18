@@ -3,24 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
-  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+        content="Single-Instance Sampling for Computationally Efficient and Accurate Real-Time Task Space MPPI Control — IEEE Transactions on Robotics, 2025">
+  <meta name="keywords" content="MPPI, Model Predictive Path Integral, Robot Manipulator, Real-Time Control, Task Space Control, MPC">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nerfies: Deformable Neural Radiance Fields</title>
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-PYVRSFMDRL');
-  </script>
+  <title>Single-Instance Sampling MPPI</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
@@ -39,6 +25,60 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+
+  <style>
+    .stat-box {
+      background: #f5f5f5;
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+      margin: 0.5rem;
+    }
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #363636;
+      line-height: 1.1;
+    }
+    .stat-unit {
+      font-size: 1.2rem;
+      color: #555;
+    }
+    .stat-desc {
+      font-size: 0.9rem;
+      color: #777;
+      margin-top: 0.3rem;
+    }
+    .method-box {
+      border: 1px solid #dbdbdb;
+      border-radius: 8px;
+      padding: 1.5rem;
+      height: 100%;
+    }
+    .method-box .title {
+      color: #363636;
+    }
+    .teaser-placeholder {
+      background: #e8e8e8;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 400px;
+      color: #888;
+      font-size: 1.1rem;
+    }
+    .comparison-highlight {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+    .tag.is-tro {
+      background-color: #00629B;
+      color: white;
+    }
+  </style>
 </head>
 <body>
 
@@ -52,33 +92,20 @@
   </div>
   <div class="navbar-menu">
     <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://keunhong.com">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
-      </a>
-
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
           More Research
         </a>
         <div class="navbar-dropdown">
-          <a class="navbar-item" href="https://hypernerf.github.io">
-            HyperNeRF
+          <a class="navbar-item" href="https://www.kist.re.kr">
+            KIST Humanoid Research Center
           </a>
-          <a class="navbar-item" href="https://nerfies.github.io">
-            Nerfies
-          </a>
-          <a class="navbar-item" href="https://latentfusion.github.io">
-            LatentFusion
-          </a>
-          <a class="navbar-item" href="https://photoshape.github.io">
-            PhotoShape
+          <a class="navbar-item" href="https://ee.korea.ac.kr">
+            Korea University EE
           </a>
         </div>
       </div>
     </div>
-
   </div>
 </nav>
 
@@ -88,367 +115,471 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Nerfies: Deformable Neural Radiance Fields</h1>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="https://keunhong.com">Keunhong Park</a><sup>1</sup>,</span>
-            <span class="author-block">
-              <a href="https://utkarshsinha.com">Utkarsh Sinha</a><sup>2</sup>,</span>
-            <span class="author-block">
-              <a href="https://jonbarron.info">Jonathan T. Barron</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="http://sofienbouaziz.com">Sofien Bouaziz</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://www.danbgoldman.com">Dan B Goldman</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://homes.cs.washington.edu/~seitz/">Steven M. Seitz</a><sup>1,2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="http://www.ricardomartinbrualla.com">Ricardo Martin-Brualla</a><sup>2</sup>
-            </span>
+
+          <div class="tags is-centered" style="margin-bottom: 0.5rem;">
+            <span class="tag is-tro is-medium">IEEE Transactions on Robotics</span>
+            <span class="tag is-light is-medium">Vol. 41, 2025</span>
+            <span class="tag is-medium" style="background-color: #e8534a; color: white;">ICRA 2026</span>
+            <span class="tag is-light is-medium">Poster Presentation</span>
           </div>
 
+          <h1 class="title is-2 publication-title">
+            Single-Instance Sampling for Computationally Efficient and Accurate Real-Time Task Space MPPI Control
+          </h1>
+
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>University of Washington,</span>
-            <span class="author-block"><sup>2</sup>Google Research</span>
+            <span class="author-block">Dongwhan Kim<sup>*1</sup>,</span>
+            <span class="author-block">Euncheol Im<sup>*2,3</sup>,</span>
+            <span class="author-block">Yujin Kim<sup>4</sup>,</span>
+            <span class="author-block">Myotaeg Lim<sup>3</sup>,</span>
+            <span class="author-block">Yisoo Lee<sup>2,†</sup></span>
+          </div>
+
+          <div class="is-size-6 publication-authors" style="margin-top: 0.3rem; color: #888;">
+            <span>* Co-first authors &nbsp;&nbsp; † Corresponding author</span>
+          </div>
+
+          <div class="is-size-6 publication-authors" style="margin-top: 0.5rem;">
+            <span class="author-block"><sup>1</sup>LG CTO,</span>
+            <span class="author-block"><sup>2</sup>Korea Institute of Science and Technology (KIST),</span>
+            <span class="author-block"><sup>3</sup>Korea University,</span>
+            <span class="author-block"><sup>4</sup>Cornell University</span>
+          </div>
+
+          <div class="is-size-7 publication-authors" style="margin-top: 0.3rem; color: #aaa;">
+            <span>D. Kim and Y. Kim were formerly with KIST and Korea University</span>
           </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
-              <!-- PDF Link. -->
+              <!-- PDF / Paper Link -->
               <span class="link-block">
-                <a href="https://arxiv.org/pdf/2011.12948"
+                <a href="https://doi.org/10.1109/TRO.2025.3626660"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
+                    <i class="fas fa-file-pdf"></i>
                   </span>
                   <span>Paper</span>
                 </a>
               </span>
+              <!-- Video Link -->
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2011.12948"
+                <a href="https://www.youtube.com/watch?v=lqLPyxnlV5k"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-              <!-- Video Link. -->
-              <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
+                    <i class="fab fa-youtube"></i>
                   </span>
                   <span>Video</span>
                 </a>
               </span>
-              <!-- Code Link. -->
-              <span class="link-block">
-                <a href="https://github.com/google/nerfies"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
-              </span>
-              <!-- Dataset Link. -->
-              <span class="link-block">
-                <a href="https://github.com/google/nerfies/releases/tag/0.1"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
-                  </a>
             </div>
-
           </div>
+
         </div>
       </div>
     </div>
   </div>
 </section>
 
+
+<!-- Teaser Video -->
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
-                type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-        free-viewpoint
-        portraits.
+      <div class="publication-video">
+        <iframe src="https://www.youtube.com/embed/lqLPyxnlV5k?rel=0&amp;showinfo=0&amp;autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=lqLPyxnlV5k"
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+      <h2 class="subtitle has-text-centered" style="margin-top: 1rem;">
+        The proposed method enables <strong>1 kHz real-time task space control</strong> of a 7-DoF robot manipulator
+        using single-instance sampling MPPI with an average computation time of only <strong>0.298 ms</strong>.
       </h2>
     </div>
   </div>
 </section>
 
 
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-steve">
-          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/steve.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-chair-tp">
-          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/chair-tp.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-shiba">
-          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/shiba.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-fullbody">
-          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/fullbody.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-blueshirt">
-          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/blueshirt.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-mask">
-          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/mask.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-coffee">
-          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/coffee.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-toby">
-          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/toby2.mp4"
-                    type="video/mp4">
-          </video>
+<!-- Key Results Statistics -->
+<section class="section" style="padding-top: 1rem; padding-bottom: 1rem;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+
+      <div class="column">
+        <div class="stat-box">
+          <div class="stat-number">0.298<span class="stat-unit"> ms</span></div>
+          <div class="stat-desc">Average computation time<br>(fastest MPC-based task space controller)</div>
         </div>
       </div>
+
+      <div class="column">
+        <div class="stat-box">
+          <div class="stat-number">18×</div>
+          <div class="stat-desc">Faster than STORM<br>(4.62 ms → 0.298 ms)</div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="stat-box">
+          <div class="stat-number">17×</div>
+          <div class="stat-desc">Faster than FDDP<br>(17.14 ms → 0.984 ms)</div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="stat-box">
+          <div class="stat-number">50×</div>
+          <div class="stat-desc">Fewer samples than<br>conventional MPPI</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
 
+<!-- Abstract -->
 <section class="section">
   <div class="container is-max-desktop">
-    <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            We present the first method capable of photorealistically reconstructing a non-rigidly
-            deforming scene using photos/videos captured casually from mobile phones.
+            This study presents a model predictive path integral (MPPI) method capable of conducting
+            <strong>high-frequency real-time model predictive control (MPC)</strong> for robot manipulators.
+            Real-time MPC-based manipulation holds significant potential for controlling an end-effector
+            precisely and reactively while satisfying various constraints in dynamic environments.
           </p>
           <p>
-            Our approach augments neural radiance fields
-            (NeRF) by optimizing an
-            additional continuous volumetric deformation field that warps each observed point into a
-            canonical 5D NeRF.
-            We observe that these NeRF-like deformation fields are prone to local minima, and
-            propose a coarse-to-fine optimization method for coordinate-based models that allows for
-            more robust optimization.
-            By adapting principles from geometry processing and physical simulation to NeRF-like
-            models, we propose an elastic regularization of the deformation field that further
-            improves robustness.
+            However, the optimization under a complex robot model and various constraints imposes a
+            heavy computational burden, hindering the realization of high-frequency updates.
+            To address this challenge, we propose a <strong>single-instance sampling-based MPPI algorithm</strong>
+            and <strong>dynamic time horizon</strong> to significantly reduce the computational burden
+            while enhancing control performance.
           </p>
           <p>
-            We show that <span class="dnerf">Nerfies</span> can turn casually captured selfie
-            photos/videos into deformable NeRF
-            models that allow for photorealistic renderings of the subject from arbitrary
-            viewpoints, which we dub <i>"nerfies"</i>. We evaluate our method by collecting data
-            using a
-            rig with two mobile phones that take time-synchronized photos, yielding train/validation
-            images of the same pose at different viewpoints. We show that our method faithfully
-            reconstructs non-rigidly deforming scenes and reproduces unseen views with high
-            fidelity.
+            The performance and efficacy of the proposed method are verified through experiments conducted
+            on a 7-degree-of-freedom robotic arm (Franka FR3), along with comparative simulations and analysis
+            against STORM, cuRobo, and FDDP.
           </p>
         </div>
       </div>
     </div>
-    <!--/ Abstract. -->
-
-    <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-    <!--/ Paper video. -->
   </div>
 </section>
 
 
+<!-- Method -->
+<section class="section" style="background: #fafafa;">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Proposed Method</h2>
+
+    <!-- Overview Figure -->
+    <div class="columns is-centered" style="margin-bottom: 2rem;">
+      <div class="column is-full-width has-text-centered">
+        <figure class="image">
+          <img src="./static/images/overview.png" alt="Overview of the proposed MPPI-based task-space control framework">
+        </figure>
+        <p class="is-size-7 has-text-centered" style="color: #888; margin-top: 0.5rem;">
+          Overview of the proposed MPPI-based task-space control framework. Yellow blocks execute in parallel on GPU.
+        </p>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+
+      <!-- Single-Instance Sampling -->
+      <div class="column">
+        <div class="method-box">
+          <h3 class="title is-4">Single-Instance Sampling</h3>
+          <div class="content has-text-justified">
+            <p>
+              We propose a novel sampling strategy where a <strong>constant change in control input
+              (δu) is sampled once</strong> and applied throughout the entire predictive horizon for each trajectory.
+            </p>
+            <p>
+              This approach differs fundamentally from conventional MPPI, which samples different
+              control perturbations at each time step, requiring nested for-loop computations.
+            </p>
+            <p><strong>Key advantages:</strong></p>
+            <ul>
+              <li>Eliminates nested for-loops → replaces with single parallel GPU execution</li>
+              <li>Broader trajectory exploration without increasing sample count</li>
+              <li>Achieves comparable/better performance with <strong>50× fewer samples</strong></li>
+              <li>Computation time for sample generation: only <strong>4.09 × 10⁻³ ms</strong></li>
+            </ul>
+            <figure class="image" style="margin-top: 1rem;">
+              <img src="./static/images/sampling_concept.png" alt="Single-instance sampling concept">
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dynamic Time Horizon -->
+      <div class="column">
+        <div class="method-box">
+          <h3 class="title is-4">Dynamic Time Horizon</h3>
+          <div class="content has-text-justified">
+            <p>
+              We propose an adaptive time horizon that automatically adjusts its length
+              based on the <strong>current distance to the goal</strong>.
+            </p>
+            <p>
+              The prediction horizon is divided into two segments using binary segmentation:
+              a short fixed-step segment (dt₁ = 0.001 s) for near-future precision, and
+              a variable-step segment (dt₂) for long-range exploration.
+            </p>
+            <p><strong>Key advantages:</strong></p>
+            <ul>
+              <li>Predicts up to <strong>2.55 s</strong> into the future with only 64 time steps</li>
+              <li>Short horizon when near goal → fast convergence</li>
+              <li>Long horizon when far from goal → avoids local minima</li>
+              <li>Automatically resolves joint limit saturation and local minima scenarios</li>
+            </ul>
+            <figure class="image" style="margin-top: 1rem;">
+              <img src="./static/images/dynamic_horizon.png" alt="Dynamic time horizon concept">
+            </figure>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Experiments -->
 <section class="section">
   <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Experiments</h2>
+    <p class="has-text-centered" style="margin-bottom: 2rem; color: #555;">
+      Validated on a 7-DoF Franka FR3 robotic arm with real-world experiments and MuJoCo simulations.
+    </p>
 
+    <!-- Control Performance -->
     <div class="columns is-centered">
-
-      <!-- Visual Effects. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-3">Visual Effects</h2>
-          <p>
-            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
-            would be impossible without nerfies since it would require going through a wall.
-          </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/dollyzoom-stacked.mp4"
-                    type="video/mp4">
-          </video>
+      <div class="column is-full-width">
+        <h3 class="title is-4">Control Performance</h3>
+        <div class="columns is-vcentered">
+          <div class="column is-5">
+            <div class="content has-text-justified">
+              <p>
+                In point-to-point real-world experiments, the proposed method achieved:
+              </p>
+              <ul>
+                <li>Average position error: <strong>~0.001 m</strong></li>
+                <li>Average orientation error: <strong>~0.018 rad</strong></li>
+                <li>Average computation time: <strong>0.298 ms</strong> (enabling &gt;1 kHz control)</li>
+              </ul>
+              <p>
+                Sample generation and state prediction together take only
+                <strong>3% of total computation time</strong>.
+              </p>
+            </div>
+          </div>
+          <div class="column is-7">
+            <video autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/step_response.mp4" type="video/mp4">
+            </video>
+            <p class="is-size-7 has-text-centered" style="color: #888; margin-top: 0.4rem;">
+              Point-to-point control: position &amp; orientation converging to 6-DoF target.
+            </p>
+          </div>
         </div>
       </div>
-      <!--/ Visual Effects. -->
+    </div>
 
-      <!-- Matting. -->
-      <div class="column">
-        <h2 class="title is-3">Matting</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              As a byproduct of our method, we can also solve the matting problem by ignoring
-              samples that fall outside of a bounding box during rendering.
-            </p>
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/matting.mp4"
-                      type="video/mp4">
+    <!-- Constraint Handling -->
+    <div class="columns is-centered" style="margin-top: 2.5rem;">
+      <div class="column is-full-width">
+        <h3 class="title is-4">Constraint Handling</h3>
+
+        <!-- Joint Limit -->
+        <div class="columns is-vcentered" style="margin-bottom: 2rem;">
+          <div class="column is-7">
+            <video autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/joint_limit.mp4" type="video/mp4">
             </video>
           </div>
-
-        </div>
-      </div>
-    </div>
-    <!--/ Matting. -->
-
-    <!-- Animation. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Animation</h2>
-
-        <!-- Interpolating. -->
-        <h3 class="title is-4">Interpolating states</h3>
-        <div class="content has-text-justified">
-          <p>
-            We can also animate the scene by interpolating the deformation latent codes of two input
-            frames. Use the slider here to linearly interpolate between the left frame and the right
-            frame.
-          </p>
-        </div>
-        <div class="columns is-vcentered interpolation-panel">
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_start.jpg"
-                 class="interpolation-image"
-                 alt="Interpolate start reference image."/>
-            <p>Start Frame</p>
-          </div>
-          <div class="column interpolation-video-column">
-            <div id="interpolation-image-wrapper">
-              Loading...
+          <div class="column is-5">
+            <h4 class="title is-5">Joint Limit Avoidance</h4>
+            <div class="content has-text-justified">
+              <p>
+                Under a <strong>5π/3 rad yaw rotation</strong> command, joint 7 reaches its position limit
+                and maintains that position. Joints 1 and 2 then generate larger movements to
+                continue tracking the target orientation without violating joint constraints.
+              </p>
             </div>
-            <input class="slider is-fullwidth is-large is-info"
-                   id="interpolation-slider"
-                   step="1" min="0" max="100" value="0" type="range">
-          </div>
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_end.jpg"
-                 class="interpolation-image"
-                 alt="Interpolation end reference image."/>
-            <p class="is-bold">End Frame</p>
           </div>
         </div>
-        <br/>
-        <!--/ Interpolating. -->
 
-        <!-- Re-rendering. -->
-        <h3 class="title is-4">Re-rendering the input video</h3>
-        <div class="content has-text-justified">
-          <p>
-            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
-            viewpoint such as a stabilized camera by playing back the training deformations.
-          </p>
+        <!-- Singularity -->
+        <div class="columns is-vcentered" style="margin-bottom: 2rem;">
+          <div class="column is-5">
+            <h4 class="title is-5">Singularity &amp; Workspace Boundary Avoidance</h4>
+            <div class="content has-text-justified">
+              <p>
+                When the target is set <strong>outside the reachable workspace</strong>, the robot
+                moves to the closest feasible position while the manipulability-based cost keeps
+                it above 0.02 — ensuring no loss of controllability.
+              </p>
+            </div>
+          </div>
+          <div class="column is-7">
+            <video autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/singularity.mp4" type="video/mp4">
+            </video>
+          </div>
         </div>
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="75%">
-            <source src="./static/videos/replay.mp4"
-                    type="video/mp4">
-          </video>
+
+        <!-- Self-Collision -->
+        <div class="columns is-vcentered">
+          <div class="column is-7">
+            <video autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/self_collision.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-5">
+            <h4 class="title is-5">Self-Collision Avoidance</h4>
+            <div class="content has-text-justified">
+              <p>
+                Using a <strong>neural network-based collision cost</strong>, the robot detects and
+                avoids self-collision in real time, achieving the closest feasible posture to the
+                target without explicit trajectory planning.
+              </p>
+            </div>
+          </div>
         </div>
-        <!--/ Re-rendering. -->
 
       </div>
     </div>
-    <!--/ Animation. -->
-
-
-    <!-- Concurrent Work. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
-
-        <div class="content has-text-justified">
-          <p>
-            There's a lot of excellent work that was introduced around the same time as ours.
-          </p>
-          <p>
-            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
-          </p>
-          <p>
-            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-            both use deformation fields to model non-rigid scenes.
-          </p>
-          <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p>
-          <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
-          </p>
-        </div>
-      </div>
-    </div>
-    <!--/ Concurrent Work. -->
 
   </div>
 </section>
 
 
+<!-- Comparison Results -->
+<section class="section" style="background: #fafafa;">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Comparison</h2>
+
+    <div class="columns is-centered">
+
+      <!-- vs STORM -->
+      <div class="column">
+        <div class="comparison-highlight">
+          <h3 class="title is-4" style="color: white;">vs. STORM</h3>
+          <div class="content" style="color: white;">
+            <p><strong style="color: white;">18× faster</strong> computation (0.255 ms vs. 4.62 ms)</p>
+            <p><strong style="color: white;">12× more accurate</strong> pose tracking (L2-norm: 3.09×10⁻² vs. 3.80×10⁻¹)</p>
+            <p>STORM fails to converge orientation error to zero; proposed method fully converges.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- vs FDDP -->
+      <div class="column">
+        <div class="method-box">
+          <h3 class="title is-4">vs. FDDP</h3>
+          <div class="content has-text-justified">
+            <p><strong>17× faster</strong> computation (0.984 ms vs. 17.14 ms)</p>
+            <p>Comparable tracking accuracy with longer prediction horizon (up to 2.55 s vs. 0.9 s for FDDP).</p>
+            <p>Position error: 0.005 m (proposed) vs. 0.035 m (FDDP).</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- vs Spline-based sampling -->
+      <div class="column">
+        <div class="method-box">
+          <h3 class="title is-4">vs. Spline Sampling</h3>
+          <div class="content has-text-justified">
+            <p><strong>1.46× faster</strong> computation (0.255 ms vs. 0.372 ms)</p>
+            <p>Single-instance sampling requires only one sample point per rollout, vs. at least two nodes for spline interpolation.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- vs STORM: video -->
+    <div class="columns is-centered" style="margin-top: 2rem;">
+      <div class="column is-full-width">
+        <video autoplay controls muted loop playsinline width="100%">
+          <source src="./static/videos/comparison_storm.mp4" type="video/mp4">
+        </video>
+        <p class="is-size-7 has-text-centered" style="color: #888; margin-top: 0.5rem;">
+          Comparison of position and orientation errors: proposed method vs. STORM (default, N=500 K=30) vs. STORM (same parameters, N=128 K=64).
+        </p>
+      </div>
+    </div>
+
+    <!-- vs STORM & cuRobo: simulation -->
+    <div class="columns is-centered" style="margin-top: 3rem;">
+      <div class="column is-full-width">
+        <h3 class="title is-4 has-text-centered">Comparison among STORM and cuRobo</h3>
+        <p class="has-text-centered" style="color: #555; margin-bottom: 1rem;">
+          Sequential target tracking across 9 poses including out-of-reach and self-collision targets (simulation).
+        </p>
+        <video autoplay controls muted loop playsinline width="100%">
+          <source src="./static/videos/comparison_storm_curob.mp4" type="video/mp4">
+        </video>
+        <p class="is-size-7 has-text-centered" style="color: #888; margin-top: 0.5rem;">
+          The proposed method and STORM handle out-of-reach / self-collision targets gracefully.
+          cuRobo fails with "IK solve fail" and cannot respond to dynamically updated targets.
+        </p>
+      </div>
+    </div>
+
+    <!-- vs FDDP: real-world -->
+    <div class="columns is-centered" style="margin-top: 3rem;">
+      <div class="column is-full-width">
+        <h3 class="title is-4 has-text-centered">Comparison with FDDP</h3>
+        <p class="has-text-centered" style="color: #555; margin-bottom: 1rem;">
+          Real-world experiment on 7-DoF Franka FR3.
+        </p>
+        <div class="columns is-vcentered">
+          <div class="column is-7">
+            <video autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/comparison_fddp.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column is-5">
+            <div class="method-box">
+              <div class="content">
+                <p><strong>17× faster</strong> computation</p>
+                <p style="color: #555; font-size: 0.9rem;">0.984 ms (proposed) vs. 17.14 ms (FDDP)</p>
+                <hr style="margin: 0.8rem 0;">
+                <p><strong>Better position accuracy</strong></p>
+                <p style="color: #555; font-size: 0.9rem;">0.005 m (proposed) vs. 0.035 m (FDDP)</p>
+                <hr style="margin: 0.8rem 0;">
+                <p><strong>Longer prediction horizon</strong></p>
+                <p style="color: #555; font-size: 0.9rem;">up to 2.55 s (proposed) vs. 0.9 s (FDDP)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<!-- BibTeX -->
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{park2021nerfies,
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
+    <pre><code>@article{kim2025single,
+  author    = {Kim, Dongwhan and Im, Euncheol and Kim, Yujin and Lim, Myotaeg and Lee, Yisoo},
+  title     = {Single-Instance Sampling for Computationally Efficient and Accurate Real-Time Task Space {MPPI} Control},
+  journal   = {IEEE Transactions on Robotics},
+  volume    = {41},
+  pages     = {6327--6344},
+  year      = {2025},
+  doi       = {10.1109/TRO.2025.3626660},
 }</code></pre>
   </div>
 </section>
@@ -458,27 +589,20 @@
   <div class="container">
     <div class="content has-text-centered">
       <a class="icon-link"
-         href="./static/videos/nerfies_paper.pdf">
+         href="https://doi.org/10.1109/TRO.2025.3626660">
         <i class="fas fa-file-pdf"></i>
-      </a>
-      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
-        <i class="fab fa-github"></i>
       </a>
     </div>
     <div class="columns is-centered">
       <div class="column is-8">
-        <div class="content">
+        <div class="content has-text-centered">
           <p>
             This website is licensed under a <a rel="license"
                                                 href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
             Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
           <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
+            Website template borrowed from <a href="https://nerfies.github.io">Nerfies</a>.
           </p>
         </div>
       </div>
